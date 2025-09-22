@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 public class Controller1 {
 
-    // stao si na 15 min lekcije 3
+
     @Autowired
     private LocalUserRepo userRepo;
 
