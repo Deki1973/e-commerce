@@ -6,32 +6,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "web_order")
+@Table(name="web_order")
 public class WebOrder {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", nullable = false)
-    private  Long id;
-    /** The user of the order*/
+    private Long id;
 
     @ManyToOne(optional = false)
     @JoinColumn(name="user_id", nullable = false)
     private LocalUser user;
 
-    /*The shipping address of the order */
     @ManyToOne(optional = false)
     @JoinColumn(name="address_id", nullable = false)
     private Address address;
 
-    /*The quantities ordered */
-    @OneToMany(mappedBy = "order", cascade=CascadeType.REMOVE, orphanRemoval = true)
-    private List<WebOrderedQuantities> quantities=new ArrayList<>();
+    @OneToMany(mappedBy = "order", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<WebOrderQuantities> quatities=new ArrayList<>();
 
-    public WebOrder(Long id, LocalUser user, Address address, List<WebOrderedQuantities> quantities) {
+
+
+    public WebOrder(Long id, LocalUser user, Address address, List<WebOrderQuantities> quatities) {
         this.id = id;
         this.user = user;
         this.address = address;
-        this.quantities = quantities;
+        this.quatities = quatities;
     }
 
     public WebOrder(){
@@ -62,11 +62,11 @@ public class WebOrder {
         this.address = address;
     }
 
-    public List<WebOrderedQuantities> getQuantities() {
-        return quantities;
+    public List<WebOrderQuantities> getQuatities() {
+        return quatities;
     }
 
-    public void setQuantities(List<WebOrderedQuantities> quantities) {
-        this.quantities = quantities;
+    public void setQuatities(List<WebOrderQuantities> quatities) {
+        this.quatities = quatities;
     }
 }

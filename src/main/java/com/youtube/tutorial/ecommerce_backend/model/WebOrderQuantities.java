@@ -3,45 +3,39 @@ package com.youtube.tutorial.ecommerce_backend.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="web_ordered_quantities")
-public class WebOrderedQuantities {
+@Table(name="web_order_quantities")
+public class WebOrderQuantities {
 
-    /*The unique id of the order quantity */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", nullable = false)
     private Long id;
 
-    /* The product being ordered */
     @ManyToOne(optional = false)
     @JoinColumn(name="product_id", nullable = false)
     private Product product;
 
-    /*The quantity being ordered */
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
-    /*The order itself */
     @ManyToOne(optional = false)
-    @JoinColumn(name="order_id",nullable = false)
-    private WebOrder webOrder;
+    @JoinColumn(name="order_id", nullable = false)
+    private WebOrder order;
 
-    public WebOrderedQuantities(Long id, Product product, Integer quantity, WebOrder webOrder) {
+    public WebOrderQuantities(Long id, Product product, Integer quantity, WebOrder order) {
         this.id = id;
         this.product = product;
         this.quantity = quantity;
-        this.webOrder = webOrder;
+        this.order = order;
     }
 
-    public WebOrderedQuantities(){
+    public WebOrderQuantities(){
 
     }
 
     public Long getId() {
         return id;
     }
-
-
 
     public void setId(Long id) {
         this.id = id;
@@ -63,11 +57,11 @@ public class WebOrderedQuantities {
         this.quantity = quantity;
     }
 
-    public WebOrder getWebOrder() {
-        return webOrder;
+    public WebOrder getOrder() {
+        return order;
     }
 
-    public void setWebOrder(WebOrder webOrder) {
-        this.webOrder = webOrder;
+    public void setOrder(WebOrder order) {
+        this.order = order;
     }
 }
