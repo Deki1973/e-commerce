@@ -3,19 +3,34 @@ package com.youtube.tutorial.ecommerce_backend.api.model;
 
 import com.youtube.tutorial.ecommerce_backend.api.controller.auth.AuthenticationController;
 import com.youtube.tutorial.ecommerce_backend.service.UserService;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 public class RegistrationBody {
-
-
-
-
-
-
-
+    @NotNull
+    @NotBlank
     private String username;
+
+    @Email
+    @NotNull
+    @NotBlank
     private String email;
+
+    //https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
+    // additionally added fullstop and comma
+    @NotNull
+    @NotBlank
+    //@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[.,@$!%*#?&])[A-Za-z\\d.,@$!%*#?&]{8,}$")
     private String password;
+
+    @NotNull
+    @NotBlank
     private String firstName;
+
+    @NotNull
+    @NotBlank
     private String lastName;
 
     public RegistrationBody(String username, String email, String password, String firstName, String lastName) {

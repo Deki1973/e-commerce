@@ -8,6 +8,7 @@ import com.youtube.tutorial.ecommerce_backend.model.LocalUser;
 import com.youtube.tutorial.ecommerce_backend.model.dao.LocalUserDAO;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class UserService {
 
