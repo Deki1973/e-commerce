@@ -1,5 +1,6 @@
 package com.youtube.tutorial.ecommerce_backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class LocalUser {
     @Column(name="username", length = 255, nullable = false, unique = true)
     private String username;
 
+    @JsonIgnore //we do not want to display this
     @Column(name="password", length = 1000, nullable = false, unique = false)
     private String password;
 
@@ -31,6 +33,8 @@ public class LocalUser {
     @Column(name="last_name", nullable = false)
     private String lastName;
 
+    @JsonIgnore //If we do not put this anotation, we will get Internal Server Error 500
+    //org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: failed to lazily initialize a collection of role:
     @OneToMany(mappedBy = "user", cascade=CascadeType.REMOVE, orphanRemoval = true)
     private List<Address> address=new ArrayList<>();
 
